@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
-import './WelcomeModal.css'
+import { useEffect, useState } from "react"
+import "./WelcomeModal.css"
 
-const STORAGE_KEY = 'hercules_welcomed'
+const STORAGE_KEY = "hercules_welcomed"
 
 interface Props {
   forceOpen?: boolean
@@ -28,64 +28,62 @@ export default function WelcomeModal({ forceOpen = false, onClose }: Props) {
     setClosing(true)
     setTimeout(() => {
       setVisible(false)
-      localStorage.setItem(STORAGE_KEY, '1')
+      localStorage.setItem(STORAGE_KEY, "1")
       onClose?.()
     }, 300)
+  }
+
+  function openKofi() {
+    window.open("https://ko-fi.com/danidev_mnr", "_blank")
   }
 
   if (!visible) return null
 
   return (
-    <div className={`modal-backdrop ${closing ? 'modal-backdrop--out' : ''}`} onClick={close}>
+    <div
+      className={closing ? "modal-backdrop modal-backdrop--out" : "modal-backdrop"}
+      onClick={close}
+    >
       <div
-        className={`modal ${closing ? 'modal--out' : ''}`}
+        className={closing ? "modal modal--out" : "modal"}
         onClick={e => e.stopPropagation()}
       >
         <div className="modal__header">
-          <span className="modal__emoji">⚡</span>
-          <h2 className="modal__title">Bienvenido a Hércules</h2>
+          <h2 className="modal__title">Bienvenido a Hercules</h2>
           <p className="modal__subtitle">Monitor y optimizador del sistema</p>
         </div>
 
         <div className="modal__features">
           <div className="modal__feature">
-            <span>⬡</span>
             <div>
               <strong>Dashboard en tiempo real</strong>
-              <p>CPU, RAM, disco y red actualizándose cada 2 segundos</p>
+              <p>CPU, RAM, disco y red actualizandose cada 2 segundos</p>
             </div>
           </div>
           <div className="modal__feature">
-            <span>☰</span>
             <div>
               <strong>Gestor de procesos</strong>
-              <p>Ordena, filtra y termina procesos fácilmente</p>
+              <p>Ordena, filtra y termina procesos facilmente</p>
             </div>
           </div>
           <div className="modal__feature">
-            <span>🧹</span>
             <div>
               <strong>Acciones del sistema</strong>
-              <p>Limpia temporales, caché y libera RAM con un clic</p>
+              <p>Limpia temporales, cache y libera RAM con un clic</p>
             </div>
           </div>
         </div>
 
         <div className="modal__author">
-          <p>Desarrollado por <a href="https://github.com/danimnr" target="_blank" rel="noopener noreferrer">danimnr</a></p>
-          <p>Hércules es <strong>gratuito y open source</strong>. Si te resulta útil:</p>
-          
-            href="https://ko-fi.com/danidev_mnr"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="kofi-btn"
-          >
-            ☕ Apóyame en Ko-fi
-          </a>
+          <p>Desarrollado por danimnr</p>
+          <p>Hercules es gratuito y open source. Si te resulta util:</p>
+          <button className="kofi-btn" onClick={openKofi}>
+            Invitame a un cafe
+          </button>
         </div>
 
         <button className="modal__close" onClick={close}>
-          Empezar a usar Hércules →
+          Empezar a usar Hercules
         </button>
       </div>
     </div>
