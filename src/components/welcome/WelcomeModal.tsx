@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import "./WelcomeModal.css"
+import { openUrl } from "@tauri-apps/plugin-opener"
 
 const STORAGE_KEY = "hercules_welcomed"
 
@@ -33,8 +34,8 @@ export default function WelcomeModal({ forceOpen = false, onClose }: Props) {
     }, 300)
   }
 
-  function openKofi() {
-    window.open("https://ko-fi.com/danidev_mnr", "_blank")
+  async function openKofi() {
+    await openUrl("https://ko-fi.com/danidev_mnr")
   }
 
   if (!visible) return null
