@@ -1,0 +1,68 @@
+.titlebar {
+  height: var(--titlebar-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-4);
+  border-bottom: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+  cursor: default;
+}
+
+.titlebar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 80px;
+}
+
+.titlebar-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+.titlebar-dot:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+.dot-close    { background: #ff5f57; }
+.dot-minimize { background: #febc2e; }
+.dot-maximize { background: #28c840; }
+
+.titlebar-center {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.titlebar-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.titlebar-platform {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  padding: 2px 8px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+}
+
+.titlebar-right {
+  width: 80px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.titlebar-time {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
