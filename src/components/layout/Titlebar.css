@@ -58,7 +58,26 @@
 .titlebar-right {
   width: 80px;
   display: flex;
+  align-items: center;
   justify-content: flex-end;
+  gap: var(--space-3);
+}
+
+.titlebar-info-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 15px;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background var(--transition-fast);
+  line-height: 1;
+}
+
+.titlebar-info-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-elevated);
 }
 
 .titlebar-time {

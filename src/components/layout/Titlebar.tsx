@@ -3,7 +3,11 @@ import { getCurrentWindow } from '@tauri-apps/api/window'
 import { useAppStore } from '../../store/appStore'
 import './Titlebar.css'
 
-export default function Titlebar() {
+interface Props {
+  onInfo: () => void
+}
+
+export default function Titlebar({ onInfo }: Props) {
   const platform = useAppStore(s => s.platform)
   const [time, setTime] = useState('')
   const win = getCurrentWindow()
@@ -31,8 +35,11 @@ export default function Titlebar() {
         <span className="titlebar-platform">{platform}</span>
       </div>
 
-      <div className="titlebar-right" data-tauri-drag-region>
-        <span className="titlebar-time">{time}</span>
+      <div className="titlebar-right">
+        <button className="titlebar-info-btn" onClick={onInfo} title="Acerca de Hércules">
+          ℹ
+        </button>
+        <span className="titlebar-time" data-tauri-drag-region>{time}</span>
       </div>
     </div>
   )
