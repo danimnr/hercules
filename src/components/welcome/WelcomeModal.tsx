@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import "./WelcomeModal.css"
 import { openUrl } from "@tauri-apps/plugin-opener"
+import logo from "../../assets/hercules_logo.svg"
 
 const STORAGE_KEY = "hercules_welcomed"
 
@@ -50,6 +51,7 @@ export default function WelcomeModal({ forceOpen = false, onClose }: Props) {
         onClick={e => e.stopPropagation()}
       >
         <div className="modal__header">
+          <img src={logo} alt="Hercules" className="modal__logo" />
           <h2 className="modal__title">Bienvenido a Hercules</h2>
           <p className="modal__subtitle">Monitor y optimizador del sistema</p>
         </div>

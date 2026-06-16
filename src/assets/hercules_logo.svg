@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="Hércules Greek column app icon">
+  <rect x="0" y="0" width="1024" height="1024" rx="165" fill="#006F82"/>
+
+  <!-- top slab -->
+  <path fill="#F6F0E8" d="M 262 243 H 762 C 755 271 742 285 729 295 H 295 C 282 285 269 271 262 243 Z"/>
+
+  <!-- ionic capital -->
+  <path fill="#F6F0E8" d="M 286 321
+    H 738
+    C 778 321 804 345 804 384
+    V 398
+    C 804 436 775 466 734 466
+    C 693 466 664 436 664 398
+    C 664 381 669 365 679 353
+    H 345
+    C 355 365 360 381 360 398
+    C 360 436 331 466 290 466
+    C 249 466 220 436 220 398
+    V 384
+    C 220 345 246 321 286 321 Z"/>
+
+  <!-- inner volute cutouts -->
+  <path fill="#006F82" d="M 680 367
+    C 707 367 726 386 726 412
+    C 726 438 707 456 681 456
+    C 694 449 703 436 703 420
+    C 703 397 685 380 662 380
+    H 644
+    C 652 372 664 367 680 367 Z"/>
+  <path fill="#006F82" d="M 344 367
+    C 317 367 298 386 298 412
+    C 298 438 317 456 343 456
+    C 330 449 321 436 321 420
+    C 321 397 339 380 362 380
+    H 380
+    C 372 372 360 367 344 367 Z"/>
+
+  <!-- gold accent -->
+  <path fill="#E6B84A" d="M 400 375 H 624 C 598 392 556 399 512 399 C 468 399 426 392 400 375 Z"/>
+
+  <!-- shaft -->
+  <rect x="390" y="392" width="244" height="30" fill="#F6F0E8"/>
+  <rect x="378" y="422" width="268" height="282" rx="0" fill="#F6F0E8"/>
+  <!-- flutes as negative space -->
+  <rect x="430" y="470" width="28" height="234" rx="14" fill="#006F82"/>
+  <rect x="486" y="470" width="28" height="234" rx="14" fill="#006F82"/>
+  <rect x="542" y="470" width="28" height="234" rx="14" fill="#006F82"/>
+  <rect x="598" y="470" width="28" height="234" rx="14" fill="#006F82"/>
+
+  <!-- base -->
+  <rect x="340" y="721" width="344" height="40" rx="20" fill="#F6F0E8"/>
+  <rect x="310" y="770" width="404" height="61" rx="12" fill="#F6F0E8"/>
+</svg>
