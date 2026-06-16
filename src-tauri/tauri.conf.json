@@ -1,5 +1,5 @@
 {
-  "productName": "Hércules",
+  "productName": "Hercules",
   "version": "0.1.0",
   "identifier": "com.danimnr.hercules",
   "build": {
@@ -11,7 +11,7 @@
   "app": {
     "windows": [
       {
-        "title": "Hércules",
+        "title": "Hercules",
         "width": 1100,
         "height": 700,
         "minWidth": 800,
