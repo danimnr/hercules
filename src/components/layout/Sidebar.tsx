@@ -1,33 +1,54 @@
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import { useAppStore } from '../../store/appStore'
-import './Sidebar.css'
+import { useState, useRef, useEffect } from "react"
+import { NavLink } from "react-router-dom"
+import { useAppStore } from "../../store/appStore"
+import "./Sidebar.css"
 
 const NAV = [
-  { to: '/dashboard', icon: '⬡', label: 'Dashboard' },
-  { to: '/processes', icon: '☰', label: 'Procesos'  },
-  { to: '/actions',   icon: '⚡', label: 'Acciones'  },
+  { to: "/dashboard", icon: "\u2B21", label: "Dashboard" },
+  { to: "/processes", icon: "\u2630", label: "Procesos"  },
+  { to: "/actions",   icon: "\u26A1", label: "Acciones"  },
 ]
 
 const ACCENT_PRESETS = [
-  '#7c6af7',
-  '#3b82f6',
-  '#10b981',
-  '#f59e0b',
-  '#ef4444',
-  '#ec4899',
+  "#7c6af7",
+  "#3b82f6",
+  "#10b981",
+  "#f59e0b",
+  "#ef4444",
+  "#ec4899",
 ]
 
 export default function Sidebar() {
   const [showSettings, setShowSettings] = useState(false)
-  const accent     = useAppStore(s => s.accent)
-  const opacity    = useAppStore(s => s.opacity)
-  const theme      = useAppStore(s => s.theme)
-  const setAccent  = useAppStore(s => s.setAccent)
-  const setOpacity = useAppStore(s => s.setOpacity)
-  const setTheme   = useAppStore(s => s.setTheme)
+  const panelRef = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
+
+  const accent          = useAppStore(s => s.accent)
+  const opacity         = useAppStore(s => s.opacity)
+  const theme           = useAppStore(s => s.theme)
+  const titlebarStyle   = useAppStore(s => s.titlebarStyle)
+  const setAccent       = useAppStore(s => s.setAccent)
+  const setOpacity      = useAppStore(s => s.setOpacity)
+  const setTheme        = useAppStore(s => s.setTheme)
+  const setTitlebarStyle = useAppStore(s => s.setTitlebarStyle)
 
   const isCustom = !ACCENT_PRESETS.includes(accent)
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (
+        showSettings &&
+        panelRef.current &&
+        !panelRef.current.contains(e.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(e.target as Node)
+      ) {
+        setShowSettings(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [showSettings])
 
   return (
     <aside className="sidebar">
@@ -37,7 +58,7 @@ export default function Sidebar() {
             key={to}
             to={to}
             className={({ isActive }) =>
-              `sidebar-item ${isActive ? 'sidebar-item--active' : ''}`
+              `sidebar-item ${isActive ? "sidebar-item--active" : ""}`
             }
           >
             <span className="sidebar-icon">{icon}</span>
@@ -48,18 +69,32 @@ export default function Sidebar() {
 
       <div className="sidebar-bottom">
         {showSettings && (
-          <div className="settings-panel">
+          <div className="settings-panel" ref={panelRef}>
             <div className="settings-section">
               <span className="settings-label">Tema</span>
               <div className="theme-toggle">
                 <button
-                  className={`theme-btn ${theme === 'dark' ? 'theme-btn--active' : ''}`}
-                  onClick={() => setTheme('dark')}
-                >🌙 Oscuro</button>
+                  className={`theme-btn ${theme === "dark" ? "theme-btn--active" : ""}`}
+                  onClick={() => setTheme("dark")}
+                >Oscuro</button>
                 <button
-                  className={`theme-btn ${theme === 'light' ? 'theme-btn--active' : ''}`}
-                  onClick={() => setTheme('light')}
-                >☀️ Claro</button>
+                  className={`theme-btn ${theme === "light" ? "theme-btn--active" : ""}`}
+                  onClick={() => setTheme("light")}
+                >Claro</button>
+              </div>
+            </div>
+
+            <div className="settings-section">
+              <span className="settings-label">Botones de ventana</span>
+              <div className="theme-toggle">
+                <button
+                  className={`theme-btn ${titlebarStyle === "native" ? "theme-btn--active" : ""}`}
+                  onClick={() => setTitlebarStyle("native")}
+                >Nativos</button>
+                <button
+                  className={`theme-btn ${titlebarStyle === "macos" ? "theme-btn--active" : ""}`}
+                  onClick={() => setTitlebarStyle("macos")}
+                >Estilo macOS</button>
               </div>
             </div>
 
@@ -69,14 +104,14 @@ export default function Sidebar() {
                 {ACCENT_PRESETS.map(color => (
                   <button
                     key={color}
-                    className={`accent-dot ${accent === color ? 'accent-dot--active' : ''}`}
+                    className={`accent-dot ${accent === color ? "accent-dot--active" : ""}`}
                     style={{ background: color }}
                     onClick={() => setAccent(color)}
                   />
                 ))}
                 <label
-                  className={`accent-custom-btn ${isCustom ? 'accent-dot--active' : ''}`}
-                  style={{ background: isCustom ? accent : 'transparent' }}
+                  className={`accent-custom-btn ${isCustom ? "accent-dot--active" : ""}`}
+                  style={{ background: isCustom ? accent : "transparent" }}
                   title="Color personalizado"
                 >
                   {!isCustom && <span className="accent-custom-icon">+</span>}
@@ -109,10 +144,11 @@ export default function Sidebar() {
         )}
 
         <button
-          className={`sidebar-item sidebar-settings-btn ${showSettings ? 'sidebar-item--active' : ''}`}
+          ref={buttonRef}
+          className={`sidebar-item sidebar-settings-btn ${showSettings ? "sidebar-item--active" : ""}`}
           onClick={() => setShowSettings(s => !s)}
         >
-          <span className="sidebar-icon">⚙</span>
+          <span className="sidebar-icon">{"\u2699"}</span>
           <span className="sidebar-label">Ajustes</span>
         </button>
       </div>

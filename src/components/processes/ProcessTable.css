@@ -1,4 +1,9 @@
 .process-table-wrap {
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
@@ -45,11 +50,13 @@
 
 .process-table-scroll {
   overflow-y: auto;
-  max-height: 420px;
+  flex: 1;
 }
 
 .process-table {
   width: 100%;
+  min-width: 100%;
+  table-layout: auto;
   border-collapse: collapse;
   font-size: var(--text-sm);
 }

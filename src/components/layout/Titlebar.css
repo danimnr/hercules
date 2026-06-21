@@ -56,21 +56,52 @@
 }
 
 .titlebar-right {
-  width: 80px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   gap: var(--space-3);
+}
+
+.titlebar-native-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.native-btn {
+  width: 28px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.native-btn:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+.native-btn--close:hover {
+  background: #ff5f57;
+  color: white;
 }
 
 .titlebar-info-btn {
   background: transparent;
   border: none;
   color: var(--text-muted);
-  font-size: 15px;
+  font-size: 13px;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
   cursor: pointer;
-  padding: 2px 4px;
-  border-radius: var(--radius-sm);
+  border-radius: 50%;
+  border: 1px solid var(--border);
   transition: color var(--transition-fast), background var(--transition-fast);
   line-height: 1;
 }
@@ -84,4 +115,5 @@
   font-size: var(--text-xs);
   color: var(--text-muted);
   font-variant-numeric: tabular-nums;
+  margin-left: var(--space-2);
 }
